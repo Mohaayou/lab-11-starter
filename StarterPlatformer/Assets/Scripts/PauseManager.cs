@@ -11,15 +11,24 @@ public class PauseManager: MonoBehaviour
             if (pauseScreen.activeSelf)
             {
                 // We're paused, so unpause
-                pauseScreen.SetActive(false);
-                Time.timeScale = 1f;
-            }
+                UnPause();
+            }   
             else
             {
                 // We're unpaused, so pause
-                pauseScreen.SetActive(true);
-                Time.timeScale = 0f;
+                Pause();
             }
         }
+    }
+    public void Pause()
+    {
+        pauseScreen.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void UnPause()
+    {
+        pauseScreen.SetActive(false);
+        Time.timeScale = 1f;
     }
 }
