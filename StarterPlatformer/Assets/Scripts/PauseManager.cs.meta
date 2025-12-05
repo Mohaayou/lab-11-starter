@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: e9fa67e85f10bf84d94c334399befd35
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pauseScreen: {instanceID: 0}
+  - player: {fileID: 2960479522042741165, guid: 7a05ce60607710648bdf8c31d6215f4e, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

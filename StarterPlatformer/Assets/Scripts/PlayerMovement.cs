@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public float groundRaycastDistance = 1f;
     public float raycastHorzSpacing = 0.5f;
     bool onGround;
-    Vector3 lastSafePos;
+    public Vector3 lastSafePos;
 
     [Header("UI Elements")]
     public Image heart0;
@@ -141,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    void UpdateUI()
+    public void UpdateUI()
     {
         // Update the UI to show the hearts based on current health.
         if (hp >= 6) heart2.sprite = fullHeart;

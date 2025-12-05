@@ -1,9 +1,19 @@
+using System.IO;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PauseManager: MonoBehaviour 
 {
     public GameObject pauseScreen;
-    public GameObject player;
+    public PlayerMovement Player;
+
+
+
+
+    void Start()
+    {
+        Player = GameObject.FindAnyObjectByType<PlayerMovement>();
+    }
 
     private void Update()
     {
@@ -35,10 +45,29 @@ public class PauseManager: MonoBehaviour
 
     public void Save()
     {
-        PlayerPrefs.SetInt("Score", PlayerMovement)
+        SaveData data = new SaveData();
+        data.score = Player.score;
+        data.hp = Player.hp;
+        data.playerPos = Player.lastSafePos;
+        string jsonData = JsonUtility.ToJson(data);
+        File.WriteAllText(Application.persistentDataPath + "/save.json", jsonData);
     }
 
     public void Load()
     {
+        string loadedJson = File.ReadAllText(Application.persistentDataPath + "/save.json");
+        SaveData data = JsonUtility.FromJson<SaveData>(loadedJson);
+        data.score = Player.score;
+        data.hp = Player.hp;
+        data.playerPos = Player.lastSafePos;
+        Player.UpdateUI();
+
+    }
+
+    class SaveData
+    {
+        public int score;
+        public int hp;
+        public Vector3 playerPos;
     }
 }
