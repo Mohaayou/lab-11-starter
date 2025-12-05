@@ -3,6 +3,7 @@ using UnityEngine;
 public class PauseManager: MonoBehaviour 
 {
     public GameObject pauseScreen;
+    public GameObject player;
 
     private void Update()
     {
@@ -30,5 +31,14 @@ public class PauseManager: MonoBehaviour
     {
         pauseScreen.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    public void Save()
+    {
+        PlayerPrefs.SetInt("Score", PlayerMovement)
+    }
+
+    public void Load()
+    {
     }
 }
